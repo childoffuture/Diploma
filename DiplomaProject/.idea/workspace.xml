@@ -1,11 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6b1ba05c-4d55-4ba6-88ac-4497ce864de2" name="Changes" comment="" />
+    <list default="true" id="6b1ba05c-4d55-4ba6-88ac-4497ce864de2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DiplomaProject/DiplomaApp/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomaProject/diploma_app/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DiplomaProject/DiplomaApp/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomaProject/diploma_app/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DiplomaProject/DiplomaApp/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomaProject/diploma_app/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DiplomaProject/DiplomaApp/migrations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomaProject/diploma_app/migrations/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DiplomaProject/DiplomaApp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomaProject/diploma_app/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DiplomaProject/DiplomaApp/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomaProject/diploma_app/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DiplomaProject/DiplomaApp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomaProject/diploma_app/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DiplomaProject/DiplomaProject/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomaProject/DiplomaProject/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DiplomaProject/DiplomaProject/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomaProject/DiplomaProject/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DiplomaProject/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/DiplomaProject/db.sqlite3" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="ProjectId" id="2AceNiOKLOYDDzfYh0aWAoF5XQI" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -16,6 +36,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../test/viewTest" />
   </component>
   <component name="RunManager">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
@@ -50,6 +71,18 @@
       <updated>1655313262864</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
