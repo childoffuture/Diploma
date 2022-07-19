@@ -1,10 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<h1>Hello!</h1>
-</body>
-</html>
+{% extends 'flatpages/default.html' %}
+
+{% block title %}
+Title
+{% endblock title %}
+
+{% block content %}
+    <br>
+    <form method="GET">
+        {{ filter.form }}
+        <input type="submit" value="Поиск">
+    </form>
+    <br>
+    {% if videos %}
+        <ul>
+        {% for record in filter.qs %}
+            <hr>
+            <li>
+                <p align="left">
+                    Дата публикации: {{ record.created }}<br>Автор: {{ record.id_user }}
+                </p>
+                <p>
+                    <a class="nav-link" href="/watch/{{ record.pk }}">{{ record.name }}</a>
+                </p>
+            </li>
+        {% endfor %}
+        </ul>
+        <hr>
+        {% if is_paginated %}
+            {% if page_obj.has_previous %}
+                <a href="?page=1">В начало</a>
+                <a href="?page={{ page_obj.previous_page_number }}"><<<</a>
+            {% endif %}
+
+            {% for num in page_obj.paginator.page_range %}
+                {% if page_obj.number == num %}
+                    <a>{{ num }}</a>
+                {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                    <a href="?page={{ num }}">{{ num }}</a>
+                {% endif %}
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">>>></a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">В конец</a>
+            {% endif %}
+
+        {% endif %}
+
+    {% else %}
+        <h3>Видео не загружены =(</h3>
+    {% endif %}
+{% endblock content %}

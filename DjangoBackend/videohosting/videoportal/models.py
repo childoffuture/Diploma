@@ -16,6 +16,7 @@ class Category(models.Model):
 
 class Video(models.Model):
     name = models.CharField(max_length=128, unique=True)
+    id_author = models.ForeignKey(User, on_delete=models.CASCADE)
     id_category = models.ForeignKey(Category, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
     description = models.TextField()

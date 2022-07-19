@@ -28,6 +28,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+SITE_ID = 1
+
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
@@ -46,6 +48,8 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
+
+    'rest_framework',
 
     'videoportal',
 ]
