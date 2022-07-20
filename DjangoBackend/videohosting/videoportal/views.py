@@ -1,4 +1,5 @@
-from django.views.generic import ListView, CreateView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import ListView, CreateView, DetailView
 from django.shortcuts import redirect
 from .models import Video, Subscription
 from .forms import VideoForm
@@ -21,22 +22,22 @@ class BaseView(ListView):
         return self.get_queryset()
 
 
-class SubscriptionView(BaseView):
+class SubscriptionView(LoginRequiredMixin, BaseView):
     def init_queryset(self):
-        return Video.object.filter(id_category__in=Subscription.object.filter(id_user=self.request.user).values('id_category'))
+        return Video.objects.filter(id_category__in=Subscription.objects.filter(id_user=self.request.user).values('id_category'))
 
 
-class RecommendView(BaseView):
+class RecommendView(LoginRequiredMixin, BaseView):
     def init_queryset(self):
         return Video.objects.filter(pk__in=Video.objects.all().order_by('-created').values('pk')[:5])
 
 
-class MyVideoView(BaseView):
+class MyVideoView(LoginRequiredMixin, BaseView):
     def init_queryset(self):
         return Video.objects.filter(id_author=self.request.user)
 
 
-class AddView(CreateView):
+class AddView(LoginRequiredMixin, CreateView):
     template_name = "add.html"
     form_class = VideoForm
 
@@ -48,3 +49,7 @@ class AddView(CreateView):
             video.save()
 
         return redirect("/")
+
+
+class VideoView(DetailView):
+    pass

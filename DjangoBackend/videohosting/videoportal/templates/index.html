@@ -10,22 +10,24 @@ Title
         {{ filter.form }}
         <input type="submit" value="Поиск">
     </form>
-    <br>
+    <hr>
     {% if videos %}
-        <ul>
+        <table>
         {% for record in filter.qs %}
+            <td>
+                <tr>
+                <a class="nav-link" href="/watch/{{ record.pk }}">
+                <video width="320" height="240" class="video-fluid">
+                    <source src="{{ record.video.url }}" type="video/mp4" />
+                </video>
+                <br>
+                <p class="text-center mt-2 mb-2">{{ record.name }}</p>
+                </a>
+                </tr>
+            </td>
             <hr>
-            <li>
-                <p align="left">
-                    Дата публикации: {{ record.created }}<br>Автор: {{ record.id_user }}
-                </p>
-                <p>
-                    <a class="nav-link" href="/watch/{{ record.pk }}">{{ record.name }}</a>
-                </p>
-            </li>
         {% endfor %}
-        </ul>
-        <hr>
+        </table>
         {% if is_paginated %}
             {% if page_obj.has_previous %}
                 <a href="?page=1">В начало</a>
