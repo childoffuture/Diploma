@@ -1,66 +1,66 @@
 $(function()
 {
-  var conn = null;
-
-  function log(msg)
-  {
-    var control = $('#log');
-    control.html(control.html() + msg + '<br/>');
-    control.scrollTop(control.scrollTop() + 1000);
-  }
+  var webSocket = null;
+  var userName = document.getElementById("chat_page").getAttribute("user_name");
 
   function connect()
   {
     disconnect();
-    var wsUri = (window.location.protocol=='https:'&&'wss://'||'ws://')+window.location.host;
-    conn = new WebSocket(wsUri);
-    conn.onopen = function()
+
+    var roomCode = document.getElementById("chat_page").getAttribute("room_code");
+    var connectionString = 'ws://' + window.location.host + '/ws/chat/' + roomCode + '/';
+    webSocket = new WebSocket(connectionString);
+    webSocket.onopen = function()
     {
       update_ui();
     };
 
-    conn.onmessage = function(e)
+    webSocket.onmessage = function(e)
     {
-      if (e.data == "test checked")
-      {
-        $('#check_status').text('подключено (проверка пройдена)');
-      }
-      else
-      {
-        log('Новая новость: ' + e.data);
-      }
+        console.log(e.data)
+        let data = JSON.parse(e.data);
+        data = data["payload"];
+        let event = data["event"];
+        if (event == "MESSAGE")
+        {
+          let message = data['text'];
+          var chat_log = $('#chat_log');
+          chat_log.html(chat_log.html() + message + '<br/>');
+          chat_log.scrollTop(chat_log.scrollTop() + 1000);
+        }
     };
 
-    conn.onclose = function()
+    webSocket.onclose = function()
     {
-      conn = null;
+      webSocket = null;
       update_ui();
     };
   }
 
   function disconnect()
   {
-    if (conn != null) {
-      conn.close();
-      conn = null;
+    if (webSocket != null)
+    {
+      webSocket.close();
+      webSocket = null;
       update_ui();
     }
   }
 
   function update_ui()
   {
-    if (conn == null) {
-      $('#status').text('не подключено');
-      $('#connect').html('Подключиться');
+    if (webSocket == null) {
+      $('#connect_status').text('Не подключено');
+      $('#connect_button').html('Подключиться');
     } else {
-      $('#status').text('подключено');
-      $('#connect').html('Отключиться');
+      $('#connect_status').text('Подключено');
+      $('#connect_button').html('Отключиться');
     }
   }
 
-  $('#connect').click(function()
+  $('#connect_button').click(function()
   {
-    if (conn == null) {
+    if (webSocket == null) {
       connect();
     } else {
       disconnect();
@@ -69,23 +69,20 @@ $(function()
     return false;
   });
 
-  $('#check').click(function()
+  $('#send_button').click(function()
   {
-    if (conn == null) {
-      $('#check_status').text('не подключено');
-    } else {
-      $('#check_status').text('проверка соединения...');
-      conn.send("test");
+    if (webSocket != null)
+    {
+        var date = new Date().toLocaleTimeString();
+        var text = $('#text').val();
+        let data = {
+            "event" : "MESSAGE",
+            "text" :  userName + ' (' + date + '): ' + text
+        }
+        console.log(JSON.stringify(data))
+        webSocket.send(JSON.stringify(data));
+        $('#text').val('').focus();
     }
-    update_ui();
-    return false;
-  });
-
-  $('#send').click(function()
-  {
-    var text = $('#text').val();
-    conn.send(text);
-    $('#text').val('').focus();
     return false;
   });
 
@@ -93,7 +90,7 @@ $(function()
   {
     if (e.keyCode === 13)
     {
-      $('#send').click();
+      $('#send_button').click();
       return false;
     }
   });

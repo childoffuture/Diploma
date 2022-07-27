@@ -5,22 +5,21 @@ Chat
 {% endblock title %}
 
 {% block content %}
-<h2>Чат с пользователем {{chatView.id_author.username}}</h2>
-<div>
-  <button id="connect">Подключиться</button>&nbsp;|&nbsp;Статус:
-  <span id="status">не подключено</span>
-  <br><br>
-  <button id="check">Проверить подключение</button>&nbsp;|&nbsp;Статус:
-  <span id="check_status">не подключено</span>
+<div id = "chat_page" room_code = {{ chatView.pk }} user_name = {{ request.user.username }}>
+  <h2>Чат с пользователем {{chatView.id_author.username}}</h2>
+  <div>
+    <button id="connect_button">Подключиться</button>&nbsp;|&nbsp;Статус:
+    <span id="connect_status">Не подключено</span>
+  </div>
+  <h3>Список сообщений</h3>
+  <hr>
+  <div id="chat_log"
+       style="width:100%;height:30em;overflow:auto;">
+  </div>
+  <hr>
+  <form id="message_form" onsubmit="return false;">
+    <input id="text" type="text" style="width:80%"/>
+    <input id="send_button" type="button" value="Отправить сообщение" />
+  </form>
 </div>
-<h3>Список сообщений</h3>
-<hr>
-<div id="log"
-     style="width:100%;height:30em;overflow:auto;">
-</div>
-<hr>
-<form id="newsform" onsubmit="return false;">
-  <input id="text" type="text" style="width:80%"/>
-  <input id="send" type="button" value="отправить сообщение" />
-</form>
 {% endblock content %}
