@@ -1,0 +1,16 @@
+{% extends 'flatpages/default.html' %}
+
+{% block title %}
+VideoView
+{% endblock title %}
+
+{% block content %}
+<h3>{{video}} (автор: {{video.id_author.username}} )</h3>
+<video width="1080" height="720" class="video-fluid" autoplay controls>
+    <source src="{{ video.video.url }}" type="video/mp4" />
+</video>
+<br>
+<b><a href="../chat/{{video.id_author.pk}}">Чат с автором видео</a></b>
+<hr>
+<b>Комментарии:</b>
+{% endblock content %}

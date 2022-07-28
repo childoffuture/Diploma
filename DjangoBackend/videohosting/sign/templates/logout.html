@@ -1,0 +1,12 @@
+{% extends 'flatpages/default.html' %}
+
+{% block content %}
+<h2> Вы вышли из системы </h2>
+<script type="text/JavaScript">
+redirectTime = "1500";
+redirectURL = "http://localhost:8000/";
+function timedRedirect() {
+    setTimeout("location.href = redirectURL;",redirectTime);
+}
+</script>
+{% endblock %}

@@ -30,6 +30,7 @@ ALLOWED_HOSTS = []
 
 SITE_ID = 2
 
+LOGIN_URL = 'sign/login/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
@@ -53,7 +54,8 @@ INSTALLED_APPS = [
     'channels',
 
     'videoportal',
-    'chat'
+    'chat',
+    'sign'
 ]
 
 MIDDLEWARE = [

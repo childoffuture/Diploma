@@ -1,7 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, CreateView, DetailView
 from django.shortcuts import redirect
-from .models import Video, Subscription
+from .models import Video, Subscription, Chat
 from .forms import VideoForm
 from .filters import VideoFilter
 
@@ -48,8 +48,15 @@ class AddView(LoginRequiredMixin, CreateView):
             video.id_author = request.user
             video.save()
 
+            if not Chat.objects.filter(id_video_author=video.id_author).exists():
+                chat = Chat(id_video_author=video.id_author)
+                chat.save()
+
         return redirect("/")
 
 
 class VideoView(DetailView):
-    pass
+    model = Video
+    template_name = "watch.html"
+    context_object_name = "video"
+

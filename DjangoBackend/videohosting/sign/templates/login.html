@@ -1,0 +1,25 @@
+{% extends 'flatpages/default.html' %}
+
+{% block content %}
+<h2> Вход на хостинг </h2>
+<div align="center">
+<form method="post" action="{% url 'login' %}">
+{% csrf_token %}
+<table>
+<tr>
+    <td>Имя пользователя:</td>
+    <td>{{ form.username }}</td>
+</tr>
+<tr>
+    <td>Пароль:</td>
+    <td>{{ form.password }}</td>
+</tr>
+</table>
+
+<input type="submit" value="Войти">
+</form>
+<br>
+<button> <a href="/sign/accounts/google/login/"> Войти через Google </a></button>
+<button> <a href="/sign/signup/"> Регистрация </a></button>
+</div>
+{% endblock %}

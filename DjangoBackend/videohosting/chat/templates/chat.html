@@ -6,7 +6,7 @@ Chat
 
 {% block content %}
 <div id = "chat_page" room_code = {{ chatView.pk }} user_name = {{ request.user.username }}>
-  <h2>Чат с пользователем {{chatView.id_author.username}}</h2>
+  <h3>Чат с пользователем {{chatView.id_video_author.username}}</h3>
   <div>
     <button id="connect_button">Подключиться</button>&nbsp;|&nbsp;Статус:
     <span id="connect_status">Не подключено</span>

@@ -48,7 +48,6 @@ class Subscription(models.Model):
 
 class Chat(models.Model):
     id_video_author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='author_relation')
-    id_commentator = models.ForeignKey(User, on_delete=models.CASCADE, related_name='commentator_relation')
 
 
 class ChatMessage(models.Model):
