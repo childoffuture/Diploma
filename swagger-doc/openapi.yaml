@@ -1,0 +1,93 @@
+openapi: 3.0.2
+info:
+  title: Документация Swagger
+  version: '1.0'
+paths:
+  /:
+    summary: Базовая страница
+    get:
+      summary: стартовая страница хостинга (доступен просмотр всех загруженных видео с фильтром по категории)
+      description: ''
+      operationId: id
+      responses:
+        default:
+          description: Default error sample response
+  /sign/login/:
+    summary: Регистрация
+    get:
+      summary: страница входа/регистрации на портале
+      description: ''
+      operationId: ''
+      responses:
+        default:
+          description: Default error sample response
+  /subscriptions/:
+    summary: Подписки
+    get:
+      summary: страница, отображающая все видео из подписок текущего пользователя
+      description: ''
+      operationId: ''
+      responses:
+        default:
+          description: Default error sample response
+  /recommendations/:
+    summary: Рeкомендации
+    get:
+      summary: страница с рекомендациями (отображает последние n добавленных записей)
+      description: ''
+      operationId: ''
+      responses:
+        default:
+          description: Default error sample response
+  /myvideos/:
+    summary: Мои видео
+    get:
+      summary: страница с видео, загруженными текущим пользователем
+      description: ''
+      operationId: ''
+      responses:
+        default:
+          description: Default error sample response
+  /watch/<id>/:
+    summary: Смотреть
+    get:
+      summary: страница просмотра видео с идентификатором id
+      description: ''
+      operationId: ''
+      responses:
+        default:
+          description: Default error sample response
+  /chat/<id>/:
+    summary: Чат
+    get:
+      summary: страница чата с автором видео (в качестве задается идентификатор учетной записи автора)
+      description: ''
+      operationId: ''
+      responses:
+        default:
+          description: Default error sample response
+  /admin/:
+    summary: Админка
+    get:
+      summary: страница администрирования Django
+      description: ''
+      operationId: ''
+      responses:
+        default:
+          description: Default error sample response
+  /add/:
+    summary: Добавить
+    post:
+      summary: страница добавления видео
+      description: ''
+      operationId: ''
+      responses:
+        default:
+          description: Default error sample response
+servers:
+  - url: http://127.0.0.1:8000
+    variables: {}
+    description: DjangoBackend
+  - url: http://127.0.0.1:3000/
+    variables: {}
+    description: ReactFrontend
