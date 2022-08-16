@@ -1,6 +1,6 @@
 # Diploma
 
-<h3>Дипломный проект по курсу Fullstack Pyython developer (SkillFactory)</h3>
+<h3>Дипломный проект по курсу Fullstack Python developer (SkillFactory)</h3>
 
 Задача: реализация видео-хостинга.
 
