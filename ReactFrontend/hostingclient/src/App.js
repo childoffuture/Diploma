@@ -10,7 +10,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch('https://jsonplaceholder.typicode.com/users').then(res => res.json())
+    fetch('http://127.0.0.1:8000/rest/').then(res => res.json())
     .then(json => {
       this.setState({
           isLoaded: true,
@@ -33,8 +33,14 @@ class App extends Component {
               <ul>
               {
                 items.map(item => (
-                  <li key={item.id}>
-                      {item.name} | {item.email}
+                  <li key={item.pk}>
+                      <a href={'/watch/'+ item.pk}>
+                      <video width="320" height="240">
+                          <source src={'http://localhost:8000' + item.video} type="video/mp4" />
+                      </video>
+                      <br />
+                      <p>{ item.name }</p>
+                      </a>
                   </li>
                 ))
               }

@@ -23,6 +23,7 @@ urlpatterns = [
     path('', include('videoportal.urls')),
     path('chat/', include('chat.urls')),
     path('sign/', include('sign.urls')),
+    path('rest/', include('drf.urls')),
 ]
 
 if settings.DEBUG:
