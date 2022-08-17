@@ -1,53 +1,52 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-class App extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      items: [],
-      isLoaded: false,
-    }
-  }
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 
-  componentDidMount() {
-    fetch('http://127.0.0.1:8000/rest/').then(res => res.json())
-    .then(json => {
-      this.setState({
-          isLoaded: true,
-          items: json,
-      })
-    });
-  }
-  
-  render() {
+import './styles.css';
 
-    var {isLoaded, items} = this.state;
+import BaseView from './BaseView';
+import SubscriptionView from './SubscriptionView';
+import RecommendationView from './RecommendationView';
+import MyVideoView from './MyVideoView';
+import WatchView from './WatchView';
 
-    if (!isLoaded) {
-      return <div>loading...</div>;
-    }
-
-
-    return (
-          <div className="App">
-              <ul>
-              {
-                items.map(item => (
-                  <li key={item.pk}>
-                      <a href={'/watch/'+ item.pk}>
-                      <video width="320" height="240">
-                          <source src={'http://localhost:8000' + item.video} type="video/mp4" />
-                      </video>
-                      <br />
-                      <p>{ item.name }</p>
-                      </a>
-                  </li>
-                ))
-              }
-              </ul>
-          </div>
-      );
-  }
+export default function App()
+{  
+  return (
+      <div className="App">
+      <BrowserRouter>
+              <nav className="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+           <div className="container">
+               <Link className="nav-link" to="/">MyTube</Link>
+               <button className="navbar-toggler" type="button" data-toggle="collapse"
+                       data-target="#navbarResponsive"
+                       aria-controls="navbarResponsive" aria-expanded="false"
+                       aria-label="Toggle navigation">
+                   <span className="navbar-toggler-icon"></span>
+               </button>
+               <div className="collapse navbar-collapse" id="navbarResponsive">
+                   <ul className="navbar-nav ml-auto">
+                     <li className="nav-item active">
+                       <Link className="nav-link" to="/subscriptions">Мои подписки</Link>
+                     </li>
+                     <li className="nav-item active">
+                         <Link className="nav-link" to="/recommendations">Рекомендации</Link>
+                     </li>
+                     <li className="nav-item active">
+                         <Link className="nav-link" to="/myvideos">Мои видео</Link>
+                     </li>
+                   </ul>
+               </div>
+           </div>
+        </nav>
+        <Routes>
+          <Route exact path="/" element={<BaseView/>} />
+          <Route path="/subscriptions" element={<SubscriptionView />} />
+          <Route path="/recommendations" element={<RecommendationView />} />
+          <Route path="/myvideos" element={<MyVideoView />} />
+          <Route path="/watch/:id" element={<WatchView />} />
+        </Routes>
+        </BrowserRouter>
+      </div>
+  );
 }
-
-export default App;

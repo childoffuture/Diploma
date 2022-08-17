@@ -29,3 +29,10 @@ class DrfRecommendView(DrfBaseView):
 class DrfMyVideoView(DrfBaseView):
     def init_queryset(self):
         return Video.objects.filter(id_author=self.request.user)
+
+
+class DrfVideoView(APIView):
+    def get(self, request, pk):
+        queryset = Video.objects.filter(id=pk)
+        serializer = BaseSerializer(queryset, many=True)
+        return Response(serializer.data)

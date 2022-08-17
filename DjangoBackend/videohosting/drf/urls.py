@@ -6,6 +6,5 @@ urlpatterns = [
     path('subscriptions', DrfSubscriptionView.as_view()),
     path('recommendations', DrfRecommendView.as_view()),
     path('myvideos', DrfMyVideoView.as_view()),
-#    path('add', DrfAddView.as_view()),
-#    path('watch/<int:pk>', DrfVideoView.as_view())
+    path('watch/<int:pk>', DrfVideoView.as_view()),
 ]
